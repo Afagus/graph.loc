@@ -10,7 +10,7 @@
         </tr>
         <tr>
             <td>
-                <select name="toMap">
+                <select name="map">
                     <option disabled selected>Принадлежность к карте</option>
                     <?php
                     require_once 'controller/listOfMaps.php';

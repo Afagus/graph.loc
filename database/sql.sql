@@ -17,11 +17,16 @@ CREATE TABLE characters
     name varchar(30)
 );
 
+DROP TABLE town;
 CREATE TABLE town
 (
     id int primary key auto_increment,
     name varchar(30),
-    toMap varchar(30),
+    map int,
     coordinateX int,
-    coordinateY int
+    coordinateY int,
+
+    constraint town_ibfk_1
+        foreign key (map) references map (id) ON DELETE CASCADE ON UPDATE RESTRICT
 )
+

@@ -7,7 +7,7 @@ $sql = "INSERT INTO town
 VALUES (" .
 
     '\''. $_POST['townName']. '\''.', ' .
-    '\''. $_POST['toMap']. '\''.', ' .
+    '\''. $_POST['map']. '\''.', ' .
     '\''. $_POST['coordinateX']. '\''.', ' .
     '\''. $_POST['coordinateY']. '\''.
       ")";
