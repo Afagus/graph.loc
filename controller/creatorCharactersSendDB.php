@@ -1,12 +1,12 @@
 <?php
 $newConnection = \database\singleConnectionToDB::getInstance();
-$sql = "INSERT INTO goods
+$sql = "INSERT INTO characters
 (name)
 VALUES (" .
 
-'\''. $_POST['NameOfGoods']. '\'' .
+'\''. $_POST['NameOfCharacter']. '\'' .
 ")";
 $newQuery = $newConnection->query($sql);
 header("HTTP/1.1. 301 Moved Permanently");
-$string = "Location: /graph/";
+$string = "Location: /graph.loc/";
 header("$string");

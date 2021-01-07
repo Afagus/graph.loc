@@ -14,6 +14,6 @@
         GRAPH THEORY
         <hr>
     </h4>
-    <a href="/graph/">Домой</a>
+    <a href="/graph.loc/">Домой</a>
 </header>
 <hr>

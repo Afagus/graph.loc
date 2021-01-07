@@ -6,13 +6,13 @@
             </form>
         </td>
         <td>
-            <form action="creatorGoods/" method="post">
-                <input type="submit" name="createGoods" value="Goods Creator">
+            <form action="creatorCharacters/" method="post">
+                <input type="submit" name="nameOfCharacter" value="Персонажи">
             </form>
         </td>
         <td>
-            <form action="creatorShop" method="post">
-                <input type="submit" name="redact" value="Shop Creator">
+            <form action="creatorTown" method="post">
+                <input type="submit" name="createTown" value="Места Средиземья">
             </form>
         </td>
         <td>
@@ -33,9 +33,16 @@
         </td>
         <td>
             <?php
-            require_once 'controller/listOfGoods.php';
-            foreach ($listOfGoods as $listOfGood) { ?>
-                <a href=""><?=  $listOfGood['name']?></a><br>
+            require_once 'controller/listOfCharacters.php';
+            foreach ($listOfCharacters as $listOfCharacter) { ?>
+                <a href=""><?=  $listOfCharacter['name']?></a><br>
+            <?php } ?>
+        </td>
+        <td>
+            <?php
+            require_once 'controller/listOfTowns.php';
+            foreach ($listOfTowns as $listOfTown) { ?>
+                <a href=""><?=  $listOfTown['name']?></a><br>
             <?php } ?>
         </td>
 

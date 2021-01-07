@@ -11,5 +11,5 @@ VALUES (" .
     ")";
 $newQuery = $newConnection->query($sql);
 header("HTTP/1.1. 301 Moved Permanently");
-$string = "Location: /graph/";
+$string = "Location: /graph.loc/";
 header("$string");

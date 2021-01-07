@@ -1,6 +1,6 @@
 
 
-<form action="/graph/creatorSpaceSendDB" method="post">
+<form action="/graph.loc/creatorSpaceSendDB" method="post">
     <table border="2">
         <tr>
         <th colspan="2">Введите данные карты</th>
