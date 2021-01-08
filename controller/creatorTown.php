@@ -15,7 +15,7 @@
                     <?php
                     require_once 'controller/listOfMaps.php';
                     foreach ($listOfMaps as $listOfMap) { ?>
-                        <option value="<?= $listOfMap['name'] ?>"><?= $listOfMap['name'] ?></option><br>
+                        <option value="<?= $listOfMap['id'] ?>"><?= $listOfMap['name'] ?></option><br>
                     <?php } ?>
                 </select>
             </td>

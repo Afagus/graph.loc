@@ -6,7 +6,7 @@ VALUES
 ('Rivendell',725, 295 ),
 ('Lindon', 180, 180),
 ('Gondor', 700, 850),
-('Mordor', 1150,850),
+('Orodruin(start point)', 1100,760),
 ('Shire', 400, 304),
 ('Erebor', 1035, 180);
 

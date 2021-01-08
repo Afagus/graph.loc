@@ -3,7 +3,7 @@ $database = \database\singleConnectionToDB::getInstance();
 $goods = json_encode($_POST['characters'], JSON_UNESCAPED_UNICODE);
 
 $sql = "INSERT INTO town
-(name, toMap, coordinateX, coordinateY)
+(name, map, coordinateX, coordinateY)
 VALUES (" .
 
     '\''. $_POST['townName']. '\''.', ' .
@@ -11,6 +11,7 @@ VALUES (" .
     '\''. $_POST['coordinateX']. '\''.', ' .
     '\''. $_POST['coordinateY']. '\''.
       ")";
+
 
 $newQuery = $database->query($sql);
 header("HTTP/1.1. 301 Moved Permanently");

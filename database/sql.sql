@@ -17,7 +17,7 @@ CREATE TABLE characters
     name varchar(30)
 );
 
-DROP TABLE town;
+
 CREATE TABLE town
 (
     id int primary key auto_increment,

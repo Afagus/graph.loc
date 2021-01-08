@@ -20,6 +20,11 @@
                 <input type="submit" name="userAction" value="Action">
             </form>
         </td>
+        <td>
+            <form action="dline" method="post">
+                <input type="submit" name="count" value="count">
+            </form>
+        </td>
     </tr>
     <tr>
         <td>

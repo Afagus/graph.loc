@@ -8,3 +8,4 @@ define('REQUEST_URI', $_SERVER['REQUEST_URI']);
 
 require_once 'content/header.php';
 require_once 'router/router.php';
+
