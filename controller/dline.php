@@ -19,9 +19,9 @@ $way = '';
 
 foreach ($listOfTowns as $coordinates) {
     foreach ($listOfTowns as $town) {
-//        if ($coordinates['id'] == $town['id']) {
-//            break;
-//        }
+        if ($coordinates['id'] == $town['id']) {
+            break;
+        }
             $way .= countOfLength($coordinates['coordinateX'], $town['coordinateX'], $coordinates['coordinateY'], $town['coordinateY']);
             $way .= ' miles between:' . $town['name'] . '-' . $coordinates['name'] . '<br>';
 
