@@ -5,7 +5,7 @@ require_once 'controller/loader.php';
 $rootFolder = str_replace(DOCUMENT_ROOT, '', str_replace('\\', '/', DIR));
 
 
-$rootFolder = substr($rootFolder, 1);
+//$rootFolder = substr($rootFolder, 1); эта строка почему-то нужна для работы роутера на другом компе
 
 $temp = rtrim(ltrim(REQUEST_URI, '/'), '/');
 
