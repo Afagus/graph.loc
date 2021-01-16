@@ -2,11 +2,11 @@
 require_once 'controller/listOfTowns.php';
 //mydebugger($listOfTowns);
 
-$x1 = 10;
-$x2 = 20;
+$x1 = 0;
+$x2 = 0;
 
-$y1 = 50;
-$y2 = 70;
+$y1 = 0;
+$y2 = 0;
 
 
 function countOfLength($x1, $x2, $y1, $y2)
@@ -17,16 +17,27 @@ function countOfLength($x1, $x2, $y1, $y2)
 
 $way = '';
 
-foreach ($listOfTowns as $coordinates) {
-    foreach ($listOfTowns as $town) {
-        if ($coordinates['id'] == $town['id']) {
-            break;
-        }
-            $way .= countOfLength($coordinates['coordinateX'], $town['coordinateX'], $coordinates['coordinateY'], $town['coordinateY']);
-            $way .= ' miles between:' . $town['name'] . '-' . $coordinates['name'] . '<br>';
+foreach ($listOfTowns as $startTown) {
+    foreach ($listOfTowns as $finishTown) {
+//        if ($finishTown['id'] == $startTown['id']) {
+//            break;
+//        }
+        $way = countOfLength($finishTown['coordinateX'], $startTown['coordinateX'], $finishTown['coordinateY'], $startTown['coordinateY']);
+        $wayBetween[$startTown['name']][$finishTown['name']] = $way;
 
-        }
+    }
 
 }
 countOfLength($x1, $x2, $y1, $y2);
-echo $way;
+
+
+mydebugger($wayBetween);
+
+foreach ($wayBetween as $endCity){
+    asort($endCity);
+
+    $firstKey[] = array_key_first($endCity);
+
+
+}
+mydebugger($firstKey);

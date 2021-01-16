@@ -1,4 +1,4 @@
-DROP TABLE town;
+
 INSERT town (name, coordinateX, coordinateY)
 VALUES
 ('Lorien',775, 465),

@@ -10,7 +10,7 @@ class Town
     public $coordinate = [];
 
 
-    public function __construct($town)
+    public function __construct($town = [])
     {
         $this->townId = $town['id'];
         $this->coordinate['x'] = $town['coordinateX'];
@@ -21,14 +21,9 @@ class Town
     /**
      * @param array $waitingHero
      */
-    public function setWaitingHero(array $waitingHero): void
+    public function setWaitingHero(array $waitingHero)
     {
         $this->waitingHero = $waitingHero;
     }
 
-    public function setNameFromDB()
-    {
-
-
-    }
 }

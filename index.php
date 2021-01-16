@@ -9,14 +9,30 @@ define('REQUEST_URI', $_SERVER['REQUEST_URI']);
 require_once 'content/header.php';
 require_once 'router/router.php';
 require_once 'classes/Town.php';
+require_once 'classes/Way.php';
 require_once 'controller/listOfTowns.php';
 
 
-foreach ($listOfTowns as $town){
-    $town = new \graph\classes\Town($town);
-    $arrayOfObjTowns[]=$town;
+foreach ($listOfTowns as $town) {
+
+    $allTowns[] = new \graph\classes\Town($town);
+
 }
 
 
 
-mydebugger($arrayOfObjTowns);
+foreach ($allTowns as $townStart){
+    foreach ($allTowns as $townFinish){
+        if ($townFinish->townId == $townStart->townId){
+            break;
+        }
+        $lengthBetween[$townStart->townId][$townFinish->townId] = new graph\classes\Way($townStart, $townFinish);
+    }
+}
+
+
+
+
+
+
+
