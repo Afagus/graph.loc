@@ -8,6 +8,8 @@ class Town
     public $name = '';
     public $townId;
     public $coordinate = [];
+    public $visited = 0;
+    public $neighbours=[];
 
 
     public function __construct($town = [])
@@ -18,12 +20,11 @@ class Town
         $this->name = $town['name'];
     }
 
-    /**
-     * @param array $waitingHero
-     */
-    public function setWaitingHero(array $waitingHero)
-    {
-        $this->waitingHero = $waitingHero;
-    }
+
+//    public function getNearestNeighbour($listNeighbours)
+//    {
+//        //mydebugger($listNeighbours);
+//    }
+
 
 }

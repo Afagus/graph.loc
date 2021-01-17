@@ -1,5 +1,6 @@
 <?php
 require_once 'controller/listOfTowns.php';
+
 //mydebugger($listOfTowns);
 
 $x1 = 0;
@@ -16,28 +17,23 @@ function countOfLength($x1, $x2, $y1, $y2)
 }
 
 $way = '';
-
 foreach ($listOfTowns as $startTown) {
     foreach ($listOfTowns as $finishTown) {
-//        if ($finishTown['id'] == $startTown['id']) {
-//            break;
-//        }
         $way = countOfLength($finishTown['coordinateX'], $startTown['coordinateX'], $finishTown['coordinateY'], $startTown['coordinateY']);
-        $wayBetween[$startTown['name']][$finishTown['name']] = $way;
-
+        if (!$way == 0) {
+            $wayBetween[$startTown['name']][$finishTown['name']] = $way;
+        }
     }
-
 }
 countOfLength($x1, $x2, $y1, $y2);
 
 
-mydebugger($wayBetween);
+//mydebugger($wayBetween);
 
-foreach ($wayBetween as $endCity){
+foreach ($wayBetween as $key => $endCity) {
     asort($endCity);
 
-    $firstKey[] = array_key_first($endCity);
-
-
+    $firstKey[$key] = array_key_first($endCity);
 }
-mydebugger($firstKey);
+//mydebugger($firstKey);
+

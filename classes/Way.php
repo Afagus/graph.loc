@@ -8,21 +8,21 @@ class Way
 {
     public $townStart;
     public $townFinish;
-    public $lengthOfWay;
+    static $lengthOfWay;
 
     public function __construct($townStart, $townFinish){
         $this->townStart = $townStart;
         $this->townFinish = $townFinish;
-        $this->lengthOfWay = $this->getLengthOfWay();
+        
     }
 
     /**
      * @return mixed
      */
-    public function getLengthOfWay()
+    static public function getLengthOfWay($townStart, $townFinish)
     {
-        $lengthOfWay = round(sqrt(pow(($this->townFinish->coordinate['x'] - $this->townStart->coordinate['x']), 2) +
-                        pow(($this->townFinish->coordinate['y'] - $this->townStart->coordinate['y']), 2)));
-        return $this->lengthOfWay = $lengthOfWay;
+        $lengthOfWay = round(sqrt(pow(($townFinish->coordinate['x'] - $townStart->coordinate['x']), 2) +
+                        pow(($townFinish->coordinate['y'] - $townStart->coordinate['y']), 2)));
+        return self::$lengthOfWay = $lengthOfWay;
     }
 }
