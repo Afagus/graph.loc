@@ -46,11 +46,9 @@ class Graph
     public function unSetPoint($toDelete)
     {
         mydebugger($toDelete);
-        foreach ($this->ways as $key1 => $way) {
-            foreach ($way as $key2 => $value) {
-
-                mydebugger($this->ways);
-
+        foreach ($this->ways as $way) {
+            if(key_exists($toDelete, $way)){
+                mydebugger($way[$toDelete]);
             }
 
 
@@ -69,11 +67,11 @@ foreach ($listOfTowns as $town1) {
         $graph->addWays($town1, $town2);
     }
 }//Добавляем расстояния между городами
-//mydebugger($graph);
+mydebugger($graph);
 $nearestCity = $graph->getNearestNeighbour('32');
 $toDelete = $graph->setVisited($nearestCity);
 $graph->unSetPoint($toDelete);
 
 
-//mydebugger($graph);
+mydebugger($graph);
 
