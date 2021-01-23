@@ -9,11 +9,13 @@ class Way
     public $townStart;
     public $townFinish;
     static $lengthOfWay;
+    public static $visited = [];
 
-    public function __construct($townStart, $townFinish){
+    public function __construct($townStart, $townFinish)
+    {
         $this->townStart = $townStart;
         $this->townFinish = $townFinish;
-        
+
     }
 
     /**
@@ -21,8 +23,12 @@ class Way
      */
     static public function getLengthOfWay($townStart, $townFinish)
     {
-        $lengthOfWay = round(sqrt(pow(($townFinish->coordinate['x'] - $townStart->coordinate['x']), 2) +
-                        pow(($townFinish->coordinate['y'] - $townStart->coordinate['y']), 2)));
-        return self::$lengthOfWay = $lengthOfWay;
+        return round(sqrt(pow(($townFinish['coordinateX'] -
+                $townStart['coordinateX']), 2) +
+            pow(($townFinish['coordinateY'] -
+                $townStart['coordinateY']), 2)));
     }
+
+
+
 }

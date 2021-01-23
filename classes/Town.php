@@ -9,7 +9,7 @@ class Town
     public $townId;
     public $coordinate = [];
     public $visited = 0;
-    public $neighbours=[];
+    public $neighbours = [];
 
 
     public function __construct($town = [])

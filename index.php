@@ -23,7 +23,7 @@ foreach ($listOfTowns as $town){
 //}
 
 
-mydebugger($listOfTowns);
+
 
 foreach ($listCityObj as $cityStart){
     foreach ($listCityObj as $cityFinish){
@@ -32,7 +32,7 @@ foreach ($listCityObj as $cityStart){
         }
     }
 }
-mydebugger($listCityObj);
+
 
 
 
