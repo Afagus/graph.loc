@@ -1,18 +1,20 @@
 <?php
 
 namespace graph\classes;
-require_once '../controller/loader.php';
-require_once '../controller/listOfTowns.php';
-require_once '../classes/Way.php';
+require_once 'controller/loader.php';
+require_once 'controller/listOfTowns.php';
+
 
 class Graph
 {
     public $ways;
     public $visited = [];
+    public $listOfTowns;
 
-    public function __construct()
+    public function __construct($listOfTowns)
     {
         $this->ways = [];
+        $this->listOfTowns = $listOfTowns;
 
     }
 
@@ -24,17 +26,29 @@ class Graph
     {
         $this->ways[$city] = [];
     }
+/**
+ * Получаем расстояние между городами по координатам точек
+**/
+    public function getLengthOfWay($townStart, $townFinish)
+    {
+        return round(sqrt(pow(($townFinish['coordinateX'] -
+                $townStart['coordinateX']), 2) +
+            pow(($townFinish['coordinateY'] -
+                $townStart['coordinateY']), 2)));
+    }
 
     /**
      * @param $city1
      * @param $city2
      * Формируем массив с точками городов и расстояниями между ними
      */
+
+
     public function addWays($city1, $city2)
     {
         if ($city1['id'] !== $city2['id']) {
-            $this->ways[$city1['id']][$city2['id']] = Way::getLengthOfWay($city1, $city2);
-            $this->ways[$city2['id']][$city1['id']] = Way::getLengthOfWay($city1, $city2);
+            $this->ways[$city1['id']][$city2['id']] = $this->getLengthOfWay($city1, $city2);
+            $this->ways[$city2['id']][$city1['id']] = $this->getLengthOfWay($city1, $city2);
         }
     }
 
@@ -77,28 +91,7 @@ class Graph
         }
     }
 
+
+
 }
 
-$graph = new Graph();
-
-foreach ($listOfTowns as $town1) {
-    $graph->addCity($town1['id']);
-}//Добавляем города
-foreach ($listOfTowns as $town1) {
-    foreach ($listOfTowns as $town2) {
-        $graph->addWays($town1, $town2);
-    }
-}//Добавляем расстояния между городами
-//mydebugger($graph);
-
-$countOfCities = count($graph->ways);
-$nearestCity = 5;
-for ($i = 0; $i< $countOfCities; $i++){
-    $graph->unSetPoint($nearestCity);
-    $nearestCity = $graph->getNearestNeighbour($nearestCity);
-}
-
-
-
-mydebugger($nearestCity);
-mydebugger($graph);

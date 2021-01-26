@@ -21,7 +21,7 @@
             </form>
         </td>
         <td>
-            <form action="classes/graph.php" method="post">
+            <form action="graph" method="post">
                 <input type="submit" name="count" value="count">
             </form>
         </td>

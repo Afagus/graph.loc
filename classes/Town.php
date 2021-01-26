@@ -1,14 +1,14 @@
 <?php
 
 namespace graph\classes;
-
+require_once 'controller/loader.php';
 
 class Town
 {
     public $name = '';
     public $townId;
-    public $coordinate = [];
-    public $neighbours = [];
+    public $coordinate;
+    public $neighbours;
 
 
     public function __construct($town = [])

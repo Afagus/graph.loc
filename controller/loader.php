@@ -3,12 +3,16 @@
 spl_autoload_register('autoloader');
 
 function autoloader($class)
+
 {
     $file = $class . '.php';
+
     require_once $file;
+
 }
 
-function mydebugger($data){
+function myDebugger($data):void
+{
     echo "<hr> <br /> <b>My debugging</b></p>";
 
     echo '<pre>';

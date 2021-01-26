@@ -2,22 +2,20 @@
 
 
 namespace graph\classes;
-
+require_once 'controller/loader.php';
 
 class Way
 {
-    public $townStart;
-    public $townFinish;
+    public static $townStart;
+    public static $townFinish;
 
-    public function __construct($townStart, $townFinish)
-    {
-        $this->townStart = $townStart;
-        $this->townFinish = $townFinish;
 
-    }
 
     /**
+     * @param $townStart
+     * @param $townFinish
      * @return mixed
+     * Вычисляем расстояние между городами по кординатам точек
      */
     static public function getLengthOfWay($townStart, $townFinish)
     {

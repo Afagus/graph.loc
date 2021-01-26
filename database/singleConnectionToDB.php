@@ -6,7 +6,7 @@ const DB_LOGIN = 'root';
 const DB_PASSWORD = '';
 const DB_NAME = 'graphbase';
 
-class singleConnectionToDB
+class   singleConnectionToDB
 {
     private $connection = null;
     private static $instance = null;
