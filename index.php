@@ -12,23 +12,38 @@ require_once 'classes/Town.php';
 require_once 'classes/Way.php';
 require_once 'controller/listOfTowns.php';
 
-
-foreach ($listOfTowns as $town){
+/**
+ * Создание массива объектов городов
+ * вида:
+ * [Lorien] => graph\classes\Town Object
+ * (
+ * [name] => Lorien
+ * [townId] => 1
+ * [coordinate] => Array
+ * (
+ * [x] => 775
+ * [y] => 465
+ * )
+ *
+ * [visited] => 0
+ * [neighbours] =>
+ * [nearestUnvisitedNeighbour] =>
+ * )
+ **/
+foreach ($listOfTowns as $town) {
 
     $listCityObj[$town['name']] = new graph\classes\Town($town);
 
 }
-//foreach ($listCityObj as $obj) {
-//    $neib = $obj->getNearestNeighbour($obj);
-//}
 
 
 
 
-foreach ($listCityObj as $cityStart){
-    foreach ($listCityObj as $cityFinish){
-        if ($cityStart->townId !== $cityFinish->townId){
+foreach ($listCityObj as $cityStart) {
+    foreach ($listCityObj as $cityFinish) {
+        if ($cityStart->townId !== $cityFinish->townId) {
             $cityStart->neighbours[$cityFinish->name] = graph\classes\Way::getLengthOfWay($cityStart, $cityFinish);
+
         }
     }
 }

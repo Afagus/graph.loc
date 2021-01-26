@@ -8,7 +8,6 @@ class Town
     public $name = '';
     public $townId;
     public $coordinate = [];
-    public $visited = 0;
     public $neighbours = [];
 
 
@@ -19,12 +18,4 @@ class Town
         $this->coordinate['y'] = $town['coordinateY'];
         $this->name = $town['name'];
     }
-
-
-//    public function getNearestNeighbour($listNeighbours)
-//    {
-//        //mydebugger($listNeighbours);
-//    }
-
-
 }

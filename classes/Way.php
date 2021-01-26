@@ -8,8 +8,6 @@ class Way
 {
     public $townStart;
     public $townFinish;
-    static $lengthOfWay;
-    public static $visited = [];
 
     public function __construct($townStart, $townFinish)
     {
@@ -28,7 +26,4 @@ class Way
             pow(($townFinish['coordinateY'] -
                 $townStart['coordinateY']), 2)));
     }
-
-
-
 }
