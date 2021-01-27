@@ -21,7 +21,7 @@
             </form>
         </td>
         <td>
-            <form action="graph" method="post">
+            <form action="logic" method="post">
                 <input type="submit" name="count" value="count">
             </form>
         </td>

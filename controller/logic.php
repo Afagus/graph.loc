@@ -3,7 +3,7 @@ require_once 'loader.php';
 require_once 'listOfTowns.php';
 require_once 'classes/Graph.php';
 use graph\classes\Graph;
-
+myDebugger($listOfTowns);
 $graph = new Graph($listOfTowns);
 
 
