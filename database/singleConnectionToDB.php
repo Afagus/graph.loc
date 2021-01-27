@@ -1,6 +1,6 @@
 <?php
 
-namespace database;
+namespace graph\database;
 const DB_HOST = 'localhost';
 const DB_LOGIN = 'root';
 const DB_PASSWORD = '';

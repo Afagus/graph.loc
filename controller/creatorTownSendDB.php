@@ -1,5 +1,6 @@
 <?php
-$database = \database\singleConnectionToDB::getInstance();
+
+$database = \graph\database\singleConnectionToDB::getInstance();
 $goods = json_encode($_POST['characters'], JSON_UNESCAPED_UNICODE);
 
 $sql = "INSERT INTO town

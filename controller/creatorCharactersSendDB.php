@@ -1,5 +1,6 @@
 <?php
-$newConnection = \database\singleConnectionToDB::getInstance();
+
+$newConnection = \graph\database\singleConnectionToDB::getInstance();
 $sql = "INSERT INTO characters
 (name)
 VALUES (" .

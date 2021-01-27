@@ -1,7 +1,7 @@
 <?php
-require_once 'controller/listOfCharacters.php';
-require_once 'controller/loader.php';
-require_once 'controller/listOfTowns.php';
+require_once 'listOfCharacters.php';
+require_once 'loader.php';
+require_once 'listOfTowns.php';
 
 ?>
 

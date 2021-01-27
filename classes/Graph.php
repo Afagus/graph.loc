@@ -1,8 +1,6 @@
 <?php
 
 namespace graph\classes;
-require_once 'controller/loader.php';
-require_once 'controller/listOfTowns.php';
 
 
 class Graph
@@ -26,9 +24,10 @@ class Graph
     {
         $this->ways[$city] = [];
     }
-/**
- * Получаем расстояние между городами по координатам точек
-**/
+
+    /**
+     * Получаем расстояние между городами по координатам точек
+     **/
     public function getLengthOfWay($townStart, $townFinish)
     {
         return round(sqrt(pow(($townFinish['coordinateX'] -
@@ -60,10 +59,17 @@ class Graph
     public function getNearestNeighbour($fromMe)
     {
         if (!isset($this->visited[0])) {
-            $this->visited[] = $fromMe;
+            $this->setVisited($fromMe);
         }
         asort($this->ways[$fromMe]);
         return array_key_first($this->ways[$fromMe]);
+    }
+
+    public function getCoordinatesById($id)
+    {
+        return 1;
+
+
     }
 
     /**
@@ -73,7 +79,7 @@ class Graph
      */
     public function setVisited($visited)
     {
-        $this->visited[] = $visited;
+        $this->visited[$visited] = $this->getCoordinatesById($visited);
         return $visited;
     }
 
@@ -90,7 +96,6 @@ class Graph
             }
         }
     }
-
 
 
 }

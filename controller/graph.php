@@ -1,8 +1,10 @@
 <?php
+require_once 'loader.php';
+require_once 'listOfTowns.php';
 require_once 'classes/Graph.php';
+use graph\classes\Graph;
 
-
-$graph = new graph\classes\Graph($listOfTowns);
+$graph = new Graph($listOfTowns);
 
 
 foreach ($graph->listOfTowns as $town1) {

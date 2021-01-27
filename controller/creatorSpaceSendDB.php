@@ -1,6 +1,6 @@
 <?php
 
-$newConnection = \database\singleConnectionToDB::getInstance();
+$newConnection = \graph\database\singleConnectionToDB::getInstance();
 $sql = "INSERT INTO map
 (name, xSize, ySize)
 VALUES (" .
