@@ -11,6 +11,20 @@ require_once 'logic.php';
 <body>
 
 <h1>Map</h1>
+<h2>Set start point</h2>
+
+<form action="" >
+    <p>
+        <select name="startTown">
+            <option disabled selected>Выберите стартовый город</option>
+            <?php
+            require_once 'controller/listOfTowns.php';
+            foreach ($listOfTowns as $listOfTown) { ?>
+                <option value="<?= $listOfTown['id'] ?>"><?= $listOfTown['name'] ?></option><br>
+            <?php } ?>
+        </select></p>
+</form>
+
 
 <svg width="1600" height="1200" style="background-image: url(content/pic/middleearth.jpg)">
     <text style="font-weight: bold" x="630" y="30" font-style="oblique">Map of BEST WORLD</text>
@@ -28,7 +42,7 @@ require_once 'logic.php';
     <?php
 
 
-    for ($i = 0; $i < count($graph->visited)-1; $i++) {
+    for ($i = 0; $i < count($graph->visited) - 1; $i++) {
         ?>
         <line x1="<?= $graph->visited[$i]['x'] ?>" y1="<?= $graph->visited[$i]['y'] ?>"
               x2="<?= $graph->visited[$i + 1]['x'] ?>" y2="<?= $graph->visited[$i + 1]['y'] ?>"
