@@ -20,12 +20,10 @@ foreach ($graph->listOfTowns as $town1) {
 
 
 $countOfCities = count($graph->ways);
-$nearestCity = 5;
+$nearestCity = 1;
 for ($i = 0; $i< $countOfCities; $i++){
     $graph->unSetPoint($nearestCity);
     $nearestCity = $graph->getNearestNeighbour($nearestCity);
 }
-
-
-myDebugger($graph->listOfTowns);
+myDebugger($graph->visited);
 myDebugger($graph);

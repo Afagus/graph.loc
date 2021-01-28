@@ -74,7 +74,7 @@ class Graph
     {
         foreach ($this->listOfTowns as $town) {
             if ($town['id'] == $id) {
-                return array('x' => $town['coordinateX'], 'y' => $town['coordinateY']);
+                return array('id' => $id, 'x' => $town['coordinateX'], 'y' => $town['coordinateY']);
             }
         }
     }
@@ -86,8 +86,10 @@ class Graph
      */
     public function setVisited($visited)
     {
-
-        $this->visited[$visited] = $this->getCoordinatesById($visited);
+        $this->visited[] = $this->getCoordinatesById($visited);
+        if (count($this->visited) == count($this->listOfTowns)) {
+            $this->visited[] = $this->visited[0];
+        }
         return $visited;
     }
 

@@ -2,6 +2,7 @@
 require_once 'listOfCharacters.php';
 require_once 'loader.php';
 require_once 'listOfTowns.php';
+require_once 'logic.php';
 
 ?>
 
@@ -16,24 +17,26 @@ require_once 'listOfTowns.php';
 
     <?php
 
-    foreach ($listOfTowns as $listOfTown):?>
-        <circle cx="<?= $listOfTown['coordinateX']?>" cy="<?= $listOfTown['coordinateY']?>" r="5"
+    /** @var $graph */
+
+    foreach ($graph->listOfTowns as $listOfTown):?>
+        <circle cx="<?= $listOfTown['coordinateX'] ?>" cy="<?= $listOfTown['coordinateY'] ?>" r="5"
                 stroke="green" stroke-width="2" fill="red"/>
-        <text style="font-weight: bold" x="<?= $listOfTown['coordinateX']?>"
-              y="<?= $listOfTown['coordinateY']?>" fill="white"><?= $listOfTown['name'] ?></text>
+        <text style="font-weight: bold" x="<?= $listOfTown['coordinateX'] ?>"
+              y="<?= $listOfTown['coordinateY'] ?>" fill="white"><?= $listOfTown['name'] ?></text>
     <?php endforeach; ?>
     <?php
 
-    foreach ($listOfTowns as $townStart) {
-        foreach ($listOfTowns as $townFinish) {
-            if ($townFinish['id'] == $townStart['id']) {
-                break;
-            } ?>
-            <line x1="<?= $townStart['coordinateX'] ?>" y1="<?= $townStart['coordinateY'] ?>"
-                  x2="<?= $townFinish['coordinateX'] ?>" y2="<?= $townFinish['coordinateY'] ?>"
-                  style="stroke:yellow;stroke-width:2"/>
-        <?php }
+
+    for ($i = 0; $i < count($graph->visited)-1; $i++) {
+        ?>
+        <line x1="<?= $graph->visited[$i]['x'] ?>" y1="<?= $graph->visited[$i]['y'] ?>"
+              x2="<?= $graph->visited[$i + 1]['x'] ?>" y2="<?= $graph->visited[$i + 1]['y'] ?>"
+              style="stroke:yellow;stroke-width:2"/>
+        <?php
+
     }
+
     ?>
 </svg>
 
