@@ -8,7 +8,7 @@ class Graph
     public $ways;
     public $visited = [];
     public $listOfTowns;
-    public $SortingWay;
+
 
     public function __construct($listOfTowns)
     {
@@ -42,8 +42,6 @@ class Graph
      * @param $city2
      * Формируем массив с точками городов и расстояниями между ними
      */
-
-
     public function addWays($city1, $city2)
     {
         if ($city1['id'] !== $city2['id']) {
@@ -66,28 +64,25 @@ class Graph
         return array_key_first($this->ways[$fromMe]);
     }
 
+
+    /**
+     * @param $id
+     * @return array
+     * Получаем из корневого массива данных координаты города по его ID
+     */
     public function getCoordinatesById($id)
     {
-//        $connection = \graph\database\singleConnectionToDB::getInstance();
-//        $dbQuery = 'SELECT coordinateX, coordinateY
-//                    FROM town
-//                    where id ='. $id;
-//
-//        return $connection->query($dbQuery);
         foreach ($this->listOfTowns as $town) {
             if ($town['id'] == $id) {
-                return $this->SortingWay= array('x' =>$town['coordinateX'],'y' =>$town['coordinateY']);
+                return array('x' => $town['coordinateX'], 'y' => $town['coordinateY']);
             }
-
         }
-
-
     }
 
     /**
      * @param $visited
      * @return mixed
-     * Отмечаем посещенные города
+     * Формируем отсортированный массив посещенных городов
      */
     public function setVisited($visited)
     {
@@ -109,7 +104,5 @@ class Graph
             }
         }
     }
-
-
 }
 
