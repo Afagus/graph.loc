@@ -8,6 +8,7 @@ class Graph
     public $ways;
     public $visited = [];
     public $listOfTowns;
+    public $SortingWay;
 
     public function __construct($listOfTowns)
     {
@@ -67,7 +68,18 @@ class Graph
 
     public function getCoordinatesById($id)
     {
-        return 1;
+//        $connection = \graph\database\singleConnectionToDB::getInstance();
+//        $dbQuery = 'SELECT coordinateX, coordinateY
+//                    FROM town
+//                    where id ='. $id;
+//
+//        return $connection->query($dbQuery);
+        foreach ($this->listOfTowns as $town) {
+            if ($town['id'] == $id) {
+                return $this->SortingWay= array('x' =>$town['coordinateX'],'y' =>$town['coordinateY']);
+            }
+
+        }
 
 
     }
@@ -79,6 +91,7 @@ class Graph
      */
     public function setVisited($visited)
     {
+
         $this->visited[$visited] = $this->getCoordinatesById($visited);
         return $visited;
     }
