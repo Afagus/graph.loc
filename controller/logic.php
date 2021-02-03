@@ -20,10 +20,9 @@ foreach ($graph->listOfTowns as $town1) {
 
 
 $countOfCities = count($graph->ways);
-$nearestCity = 1;
+$nearestCity = 7; //обозначить стартовый город
 for ($i = 0; $i< $countOfCities; $i++){
     $graph->unSetPoint($nearestCity);
     $nearestCity = $graph->getNearestNeighbour($nearestCity);
 }
-myDebugger($graph->visited);
-myDebugger($graph);
+
