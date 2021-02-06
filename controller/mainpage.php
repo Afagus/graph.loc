@@ -17,7 +17,7 @@
         </td>
         <td>
             <form action="userAction" method="post">
-                <input type="submit" name="userAction" value="Action">
+                <input type="submit" name="userAction" value="Карта">
             </form>
         </td>
         <td>

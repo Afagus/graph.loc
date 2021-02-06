@@ -1,6 +1,5 @@
 <?php
 require_once 'loader.php';
-require_once 'classes/Graph.php';
 require_once 'controller/listOfItems.php';
 
 use graph\classes\Graph;
