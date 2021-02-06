@@ -1,4 +1,6 @@
-
+<?php
+require_once 'content/header.php';
+?>
 
 <form action="/graph.loc/creatorSpaceSendDB" method="post">
     <table border="2">

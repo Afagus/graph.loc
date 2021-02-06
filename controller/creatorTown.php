@@ -1,3 +1,6 @@
+<?php
+require_once 'content/header.php';
+?>
 <form action="/graph.loc/creatorTownSendDB" method="post">
     <table border="2">
         <tr>
@@ -13,7 +16,7 @@
                 <select name="map">
                     <option disabled selected>Принадлежность к карте</option>
                     <?php
-                    require_once 'controller/listOfMaps.php';
+                    require_once 'controller/listOfItems.php';
                     foreach ($listOfMaps as $listOfMap) { ?>
                         <option value="<?= $listOfMap['id'] ?>"><?= $listOfMap['name'] ?></option><br>
                     <?php } ?>
@@ -49,7 +52,7 @@
         <tr>
             <td>
                 <?php
-                require_once 'controller/listOfCharacters.php';
+                require_once 'controller/listOfItems.php';
                 foreach ($listOfCharacters as $listOfCharacter) {
                     ?>
                     <input type="checkbox"

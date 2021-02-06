@@ -1,11 +1,10 @@
 <?php
 require_once 'loader.php';
-require_once 'listOfTowns.php';
 require_once 'classes/Graph.php';
+require_once 'controller/listOfItems.php';
+
 use graph\classes\Graph;
 
-
-/** @var $listOfTowns */
 
 $graph = new Graph($listOfTowns);
 
@@ -18,11 +17,11 @@ foreach ($graph->listOfTowns as $town1) {
     }
 }//Добавляем расстояния между городами
 
+$nearestCity = 7; //обозначить стартовый город
 
 $countOfCities = count($graph->ways);
-$nearestCity = 7; //обозначить стартовый город
+
 for ($i = 0; $i< $countOfCities; $i++){
     $graph->unSetPoint($nearestCity);
     $nearestCity = $graph->getNearestNeighbour($nearestCity);
 }
-

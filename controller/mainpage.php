@@ -29,25 +29,23 @@
     <tr>
         <td>
             <?php
-            require_once 'controller/listOfMaps.php';
+            require_once 'controller/listOfItems.php';
             foreach ($listOfMaps as $listOfMap) { ?>
-                <a href=""><?=  $listOfMap['name'] . ' - pазмер ' .
-                                $listOfMap['xSize'] . '*' .
-                                $listOfMap['ySize'] ?></a><br>
+                <a href=""><?= $listOfMap['name'] . ' - pазмер ' .
+                    $listOfMap['xSize'] . '*' .
+                    $listOfMap['ySize'] ?></a><br>
             <?php } ?>
         </td>
         <td>
             <?php
-            require_once 'controller/listOfCharacters.php';
             foreach ($listOfCharacters as $listOfCharacter) { ?>
-                <a href=""><?=  $listOfCharacter['name']?></a><br>
+                <a href=""><?= $listOfCharacter['name'] ?></a><br>
             <?php } ?>
         </td>
         <td>
             <?php
-            require_once 'controller/listOfTowns.php';
             foreach ($listOfTowns as $listOfTown) { ?>
-                <a href=""><?=  $listOfTown['name']?></a><br>
+                <a href=""><?= $listOfTown['name'] ?></a><br>
             <?php } ?>
         </td>
 

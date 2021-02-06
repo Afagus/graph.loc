@@ -1,4 +1,6 @@
 <?php
+require_once 'database/singleConnectionToDB.php';
+
 
 $database = \graph\database\singleConnectionToDB::getInstance();
 $goods = json_encode($_POST['characters'], JSON_UNESCAPED_UNICODE);

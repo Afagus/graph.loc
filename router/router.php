@@ -1,5 +1,5 @@
 <?php
-require_once 'controller/loader.php';
+require_once 'loader.php';
 
 
 $rootFolder = str_replace(DOCUMENT_ROOT, '', str_replace('\\', '/', DIR));

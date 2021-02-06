@@ -1,3 +1,6 @@
+<?php
+require_once 'content/header.php';
+?>
 <form action="/graph.loc/creatorCharactersSendDB" method="post">
     <table border="2">
         <tr>

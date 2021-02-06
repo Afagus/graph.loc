@@ -1,8 +1,8 @@
 <?php
-require_once 'listOfCharacters.php';
 require_once 'loader.php';
-require_once 'listOfTowns.php';
+require_once 'listOfItems.php';
 require_once 'logic.php';
+require_once 'functions.php';
 
 ?>
 
@@ -12,47 +12,41 @@ require_once 'logic.php';
 
 <h1>Map</h1>
 <h2>Set start point</h2>
-
-<form action="" >
+<?php myDebugger($_POST); ?>
+<form method="post">
     <p>
         <select name="startTown">
             <option disabled selected>Выберите стартовый город</option>
             <?php
-            require_once 'controller/listOfTowns.php';
-            foreach ($listOfTowns as $listOfTown) { ?>
-                <option value="<?= $listOfTown['id'] ?>"><?= $listOfTown['name'] ?></option><br>
+            foreach ($listOfTowns as $town) { ?>
+                <option value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
             <?php } ?>
-        </select></p>
+        </select>
+
+    </p>
+    <p>
+        <select name="character">
+            <option disabled selected>Выберите персонажа</option>
+            <?php
+            require_once 'controller/listOfItems.php';
+            foreach ($listOfCharacters as $Character) { ?>
+                <option value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
+            <?php } ?>
+        </select>
+        <input type="submit" name="startTown" value="Просчитать">
+    </p>
 </form>
+<?php
 
 
-<svg width="1600" height="1200" style="background-image: url(content/pic/middleearth.jpg)">
-    <text style="font-weight: bold" x="630" y="30" font-style="oblique">Map of BEST WORLD</text>
-
-    <?php
-
-    /** @var $graph */
-
-    foreach ($graph->listOfTowns as $listOfTown):?>
-        <circle cx="<?= $listOfTown['coordinateX'] ?>" cy="<?= $listOfTown['coordinateY'] ?>" r="5"
-                stroke="green" stroke-width="2" fill="red"/>
-        <text style="font-weight: bold" x="<?= $listOfTown['coordinateX'] ?>"
-              y="<?= $listOfTown['coordinateY'] ?>" fill="white"><?= $listOfTown['name'] ?></text>
-    <?php endforeach; ?>
-    <?php
+// Перенаправление (обновление страницы)
+if (isset($_POST['Submit'])) {
+    echo "<meta http-equiv='refresh' content='0'>";
+}
 
 
-    for ($i = 0; $i < count($graph->visited) - 1; $i++) {
-        ?>
-        <line x1="<?= $graph->visited[$i]['x'] ?>" y1="<?= $graph->visited[$i]['y'] ?>"
-              x2="<?= $graph->visited[$i + 1]['x'] ?>" y2="<?= $graph->visited[$i + 1]['y'] ?>"
-              style="stroke:yellow;stroke-width:2"/>
-        <?php
+require_once 'controller/CreatorMap.php';
+?>
 
-    }
 
-    ?>
-</svg>
-
-</body>
 </html>

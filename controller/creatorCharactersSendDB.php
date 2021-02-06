@@ -1,4 +1,5 @@
 <?php
+require_once 'database/singleConnectionToDB.php';
 
 $newConnection = \graph\database\singleConnectionToDB::getInstance();
 $sql = "INSERT INTO characters

@@ -2,7 +2,6 @@
 
 namespace graph\classes;
 
-
 class Graph
 {
     public $ways;
@@ -60,6 +59,7 @@ class Graph
         if (!isset($this->visited[0])) {
             $this->setVisited($fromMe);
         }
+
         asort($this->ways[$fromMe]);
         return array_key_first($this->ways[$fromMe]);
     }
