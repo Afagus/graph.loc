@@ -43,8 +43,10 @@ if (isset($_POST['Submit'])) {
 }
 
 
-require_once 'controller/CreatorMap.php';
+$setMap = new \graph\classes\Map($graph);
+$setMap->rendering();
+
+
 ?>
-
-
+</body>
 </html>
