@@ -16,11 +16,15 @@ foreach ($graph->listOfTowns as $town1) {
     }
 }//Добавляем расстояния между городами
 
-$nearestCity = 7; //обозначить стартовый город
 
-$countOfCities = count($graph->ways);
+if (!empty($_POST['start'])) {
 
-for ($i = 0; $i< $countOfCities; $i++){
-    $graph->unSetPoint($nearestCity);
-    $nearestCity = $graph->getNearestNeighbour($nearestCity);
+    $nearestCity = $_POST['start']; //обозначить стартовый город
+
+    $countOfCities = count($graph->ways);
+
+    for ($i = 0; $i < $countOfCities; $i++) {
+        $graph->unSetPoint($nearestCity);
+        $nearestCity = $graph->getNearestNeighbour($nearestCity);
+    }
 }

@@ -1,21 +1,19 @@
 <?php
-require_once 'loader.php';
-require_once 'listOfItems.php';
 require_once 'logic.php';
 require_once 'functions.php';
+require_once 'content/header.php';
+require_once 'listOfItems.php';
 
 ?>
 
 
 <html>
 <body>
+<h1 align="center">Map</h1>
 
-<h1>Map</h1>
-<h2>Set start point</h2>
-<?php myDebugger($_POST); ?>
 <form method="post">
     <p>
-        <select name="startTown">
+        <select name="start">
             <option disabled selected>Выберите стартовый город</option>
             <?php
             foreach ($listOfTowns as $town) { ?>
