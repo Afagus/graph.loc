@@ -21,9 +21,7 @@ if (!empty($_POST['start'])) {
 
     $nearestCity = $_POST['start']; //обозначить стартовый город
 
-    $countOfCities = count($graph->ways);
-
-    for ($i = 0; $i < $countOfCities; $i++) {
+        for ($i = 0; $i < count($graph->ways); $i++) {
         $graph->unSetPoint($nearestCity);
         $nearestCity = $graph->getNearestNeighbour($nearestCity);
     }

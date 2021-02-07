@@ -1,6 +1,6 @@
-DROP TABLE if exists map;
 DROP TABLE if exists characters;
 DROP TABLE if exists town;
+DROP TABLE if exists map;
 
 
 CREATE TABLE map

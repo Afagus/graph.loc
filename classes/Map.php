@@ -10,6 +10,7 @@ use graph\database\singleConnectionToDB;
 class Map
 {
 private $listOfTowns;
+private $visited;
 
 public function __construct(\graph\classes\Graph $graph)
 {

@@ -1,7 +1,7 @@
 
 INSERT town (name, coordinateX, coordinateY)
 VALUES
-('Orodruin(start point)', 1100,760),
+('Orodruin', 1100,760),
 ('Lorien',775, 465),
 ('Rohan', 700, 665),
 ('Rivendell',725, 295 ),
