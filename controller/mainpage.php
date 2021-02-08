@@ -39,7 +39,7 @@
         <td>
             <?php
             foreach ($listOfCharacters as $listOfCharacter) { ?>
-                <a href=""><?= $listOfCharacter['name'] ?></a><br>
+                <a href="character/<?=$listOfCharacter['id']?>"><?= $listOfCharacter['name'] ?></a><br>
             <?php } ?>
         </td>
         <td>

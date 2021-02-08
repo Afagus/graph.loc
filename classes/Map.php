@@ -29,14 +29,7 @@ public function setTown()
     <?php endforeach;
 }
 
-public function getHeadOfMap()
-{
-?>
-<svg width="1600" height="1200" style="background-image: url(content/pic/middleearth.jpg)">
-    <text style="font-weight: bold" x="630" y="30" font-style="oblique">Map of BEST WORLD</text>
-    <?php
 
-    }
 
     public function getbuildingWay()
     {
@@ -44,7 +37,7 @@ public function getHeadOfMap()
             ?>
             <line x1="<?= $this->visited[$i]['x'] ?>" y1="<?= $this->visited[$i]['y'] ?>"
                   x2="<?= $this->visited[$i + 1]['x'] ?>" y2="<?= $this->visited[$i + 1]['y'] ?>"
-                  style="stroke:yellow;stroke-width:2"/>
+                  style="stroke:yellow;stroke-width:2"></line>
             <?php
         }
 

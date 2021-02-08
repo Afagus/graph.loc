@@ -51,13 +51,14 @@ require_once 'content/header.php';
         </tr>
         <tr>
             <td>
+                <h5>Готов принять в гости</h5>
                 <?php
                 require_once 'controller/listOfItems.php';
-                foreach ($listOfCharacters as $listOfCharacter) {
+                 foreach ($listOfCharacters as $listOfCharacter) {
                     ?>
                     <input type="checkbox"
                            name="characters[]"
-                           value="<?= $listOfCharacter['name'] ?>"><?= $listOfCharacter['name'] ?><Br>
+                           value="<?= $listOfCharacter['id'] ?>"><?= $listOfCharacter['name'] ?><Br>
                 <?php } ?>
             </td>
         </tr>

@@ -3,23 +3,14 @@ require_once 'loader.php';
 
 
 $rootFolder = str_replace(DOCUMENT_ROOT, '', str_replace('\\', '/', DIR));
-
-
 //$rootFolder = substr($rootFolder, 1); эта строка почему-то нужна для работы роутера на другом компе
+$killSlash = trim(REQUEST_URI, '/');
+$stringURI = str_replace($rootFolder, '', $killSlash);
+$stringURI = trim($stringURI, '/' );
 
-$temp = rtrim(ltrim(REQUEST_URI, '/'), '/');
+$stringURI = explode('/', $stringURI);
 
-
-$arrayQuery = str_replace($rootFolder, '', $temp);
-
-
-$arrayQuery = substr($arrayQuery, 1 );
-
-
-$arrayQuery = explode('/', $arrayQuery);
-
-
-define('ROUTE', $arrayQuery);
+define('ROUTE', $stringURI);
 $filePath = ROUTE[0];
 
 
