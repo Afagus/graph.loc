@@ -1,3 +1,4 @@
+DROP TABLE if exists friendship;
 DROP TABLE if exists characters;
 DROP TABLE if exists town;
 DROP TABLE if exists map;
@@ -30,3 +31,16 @@ CREATE TABLE town
         foreign key (map) references map (id) ON DELETE CASCADE ON UPDATE RESTRICT
 )
 
+create table friendship
+(
+    id           int auto_increment
+        primary key,
+    id_town      int null,
+    id_character int null,
+    constraint friendship_characters_id_fk
+        foreign key (id_character) references graphbase.characters (id)
+            on update cascade on delete cascade,
+    constraint friendship_town_id_fk
+        foreign key (id_town) references graphbase.town (id)
+            on update cascade on delete cascade
+);
