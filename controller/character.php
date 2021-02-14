@@ -6,11 +6,6 @@ require_once 'logic.php';
 
 $id = ROUTE[1];
 $newCharacter = new \graph\classes\Character($id);
-
-$newTown = new \graph\classes\Town($id);
-myDebugger($newTown->getTown());
-
-
-//$newCharacter->deleteCharacter();
+$newCharacter->createFormForCharacter();
 
 

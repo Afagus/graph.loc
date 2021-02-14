@@ -12,7 +12,6 @@ class Character
     private $name;
 
 
-
     public function __construct($id)
     {
         $this->getCharacterByIdFromDB($id);
@@ -25,6 +24,7 @@ class Character
                 SET name = " . '\'' . $name . '\'' .
             "WHERE id = " . $this->id;
         $newQuery = $newConnection->query($sql);
+
     }
 
     public function deleteCharacter()
@@ -67,4 +67,49 @@ class Character
             $this->name = ($newQuery[0]['name']);
         }
     }
+
+    public function createFormForCharacter()
+    {
+        ?>
+        <form action="/graph.loc/characterChanger/<?=$this->id?>" method="post">
+            <table border="2">
+                <tr>
+                    <th colspan="2">Персонаж</th>
+                </tr>
+                <tr>
+                    <td>
+                        <b>ID Персонажа</b>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="ID персонажа" name="IdOfCharacter" value="<?= $this->id ?>"
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Имя Персонажа</b>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Имя персонажа" name="NameOfCharacter" value="<?= $this->name ?>"
+                    </td>
+
+                    <td>
+                        <input type="submit" value="Изменить">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <form action="/graph.loc/characterDeleter/<?=$this->id?>" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <input type="submit" value="Удалить персонажа напрочь ))">
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <?php
+    }
+
+
 }

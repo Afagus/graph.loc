@@ -7,12 +7,12 @@
         </td>
         <td>
             <form action="creatorCharacters/" method="post">
-                <input type="submit" name="nameOfCharacter" value="Персонажи">
+                <input type="submit" name="nameOfCharacter" value="Создать персонажа">
             </form>
         </td>
         <td>
             <form action="creatorTown" method="post">
-                <input type="submit" name="createTown" value="Места Средиземья">
+                <input type="submit" name="createTown" value="Создать город Средиземья">
             </form>
         </td>
         <td>
@@ -26,8 +26,13 @@
             </form>
         </td>
     </tr>
+    <td align="center"><h4>Список имеющихся карт</h4></td>
+    <td align="center"><h4>Список имеющихся персонажей</h4></td>
+    <td align="center"><h4>Список имеющихся городов</h4></td>
+
     <tr>
         <td>
+
             <?php
             require_once 'controller/listOfItems.php';
             foreach ($listOfMaps as $listOfMap) { ?>
@@ -39,7 +44,7 @@
         <td>
             <?php
             foreach ($listOfCharacters as $listOfCharacter) { ?>
-                <a href="character/<?=$listOfCharacter['id']?>"><?= $listOfCharacter['name'] ?></a><br>
+                <a href="character/<?=$listOfCharacter['id']?>/action"><?= $listOfCharacter['name'] ?></a><br>
             <?php } ?>
         </td>
         <td>
