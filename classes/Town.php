@@ -119,7 +119,7 @@ class Town
                 <tr>
                     <td>
                         <select name="coordinateX">
-                            <option disabled selected><?= $this->coordinateX?></option>
+                            <option selected><?= $this->coordinateX?></option>
                             <?php
                             for ($i = 0; $i < 1600; $i++) :
                                 ?>
@@ -132,11 +132,11 @@ class Town
                 <tr>
                     <td>
                         <select name="coordinateY">
-                            <option disabled selected><?= $this->coordinateY?></option>
+                            <option selected value="<?= $this->coordinateY?>"><?= $this->coordinateY?></option>
                             <?php
                             for ($i = 0; $i < 1200; $i++) {
                                 ?>
-                                <option><?= $i ?></option>
+                                <option value="<?=$i ?>"><?= $i ?></option>
                             <?php }
                             ?>
                         </select>
