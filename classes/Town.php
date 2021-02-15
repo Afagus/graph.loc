@@ -93,7 +93,7 @@ class Town
     public function createFormOfTown($listOfMaps, $listOfCharacters)
     {
         ?>
-        <form action="/graph.loc/creatorTownSendDB" method="post">
+        <form action="/graph.loc/townChanger" method="post">
             <table border="2">
                 <tr>
                     <th colspan="2">Изменить город</th>
@@ -123,7 +123,7 @@ class Town
                             <?php
                             for ($i = 0; $i < 1600; $i++) :
                                 ?>
-                                <option><?= $i ?></option>
+                                <option><?=$i ?></option>
                             <?php endfor;
                             ?>
                         </select>
@@ -144,17 +144,17 @@ class Town
                 </tr>
                 <tr>
                     <td>
-                        <h5>Готов принять в гости</h5>
+                        <h5>Установить друга</h5>
                         <?php
                         $arrayOfFriend = $this->getListOfFriends();
                         foreach ($listOfCharacters as $listOfCharacter) {
                             if(in_array($listOfCharacter['id'],$arrayOfFriend)):
                             ?>
-                                <strong>her <?= $listOfCharacter['name'] ?></strong><Br>
+                                <strong>Друг <?= $listOfCharacter['name'] ?></strong><br>
                             <?php else:?>
                                 <input type="checkbox"
                                    name="characters[]"
-                                   value="<?= $listOfCharacter['id'] ?>"><?= $listOfCharacter['name'] ?><Br>
+                                   value="<?= $listOfCharacter['id'] ?>"><?= $listOfCharacter['name'] ?><br>
                             <?php endif;?>
                         <?php } ?>
                     </td>
@@ -168,15 +168,4 @@ class Town
         </form>
         <?php
     }
-
-//    public function setFriend()
-//    {
-//        $newConnection = \graph\database\singleConnectionToDB::getInstance();
-//        $sql = "INSERT INTO friendship
-//(id_town, id_character)
-//VALUES (" ")";
-//        $newQuery = $newConnection->query($sql);
-//
-//    }
-
 }
