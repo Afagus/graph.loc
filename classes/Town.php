@@ -75,11 +75,18 @@ class Town
 
     public function getListOfFriends()
     {
+        $result = [];
         $newConnection = \graph\database\singleConnectionToDB::getInstance();
         $sql = "SELECT id_character 
         FROM friendship
         WHERE  id_town = ". $this->id;
-        return $newConnection->query($sql);
+        $temp = $newConnection->query($sql);
+        if($temp){
+            foreach ($temp as $el){
+                $result[]=$el['id_character'];
+            }
+        }
+        return $result;
     }
 
 
@@ -139,11 +146,16 @@ class Town
                     <td>
                         <h5>Готов принять в гости</h5>
                         <?php
+                        $arrayOfFriend = $this->getListOfFriends();
                         foreach ($listOfCharacters as $listOfCharacter) {
+                            if(in_array($listOfCharacter['id'],$arrayOfFriend)):
                             ?>
-                            <input type="checkbox"
+                                <strong>her <?= $listOfCharacter['name'] ?></strong><Br>
+                            <?php else:?>
+                                <input type="checkbox"
                                    name="characters[]"
                                    value="<?= $listOfCharacter['id'] ?>"><?= $listOfCharacter['name'] ?><Br>
+                            <?php endif;?>
                         <?php } ?>
                     </td>
                 </tr>
