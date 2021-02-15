@@ -50,7 +50,7 @@
         <td>
             <?php
             foreach ($listOfTowns as $listOfTown) { ?>
-                <a href=""><?= $listOfTown['name'] ?></a><br>
+                <a href="town/<?= $listOfTown['id']?>/action"><?= $listOfTown['name'] ?></a><br>
             <?php } ?>
         </td>
 

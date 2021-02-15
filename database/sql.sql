@@ -29,7 +29,7 @@ CREATE TABLE town
 
     constraint town_ibfk_1
         foreign key (map) references map (id) ON DELETE CASCADE ON UPDATE RESTRICT
-)
+);
 
 create table friendship
 (
