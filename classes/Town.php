@@ -93,7 +93,7 @@ class Town
     public function createFormOfTown($listOfMaps, $listOfCharacters)
     {
         ?>
-        <form action="/graph.loc/townChanger" method="post">
+        <form action="/graph.loc/townChanger/<?= $this->id?>" method="post">
             <table border="2">
                 <tr>
                     <th colspan="2">Изменить город</th>
@@ -150,7 +150,8 @@ class Town
                         foreach ($listOfCharacters as $listOfCharacter) {
                             if(in_array($listOfCharacter['id'],$arrayOfFriend)):
                             ?>
-                                <strong>Друг <?= $listOfCharacter['name'] ?></strong><br>
+                                <strong><a href="/graph.loc/friendDeleter/<?= $listOfCharacter['id']?>/<?=$this->id?>">Друг <?= $listOfCharacter['name'] ?> </a></strong><br>
+
                             <?php else:?>
                                 <input type="checkbox"
                                    name="characters[]"
