@@ -11,7 +11,18 @@ require_once 'listOfItems.php';
 <body>
 <h1 align="center">Map</h1>
 
-<form method="post">
+<form action="/graph/selectorByCharacter/" method="post">
+
+    <p>
+        <select name="character">
+            <option disabled selected>Выберите персонажа</option>
+            <?php
+            require_once 'controller/listOfItems.php';
+            foreach ($listOfCharacters as $Character) { ?>
+                <option value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
+            <?php } ?>
+        </select>
+
     <p>
         <select name="start">
             <option disabled selected>Выберите стартовый город</option>
@@ -22,16 +33,7 @@ require_once 'listOfItems.php';
         </select>
 
     </p>
-    <p>
-        <select name="character">
-            <option disabled selected>Выберите персонажа</option>
-            <?php
-            require_once 'controller/listOfItems.php';
-            foreach ($listOfCharacters as $Character) { ?>
-                <option value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
-            <?php } ?>
-        </select>
-        <input type="submit" name="startTown" value="Просчитать">
+    <input type="submit" name="startTown" value="Просчитать">
     </p>
 </form>
 <?php
