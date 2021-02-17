@@ -44,3 +44,9 @@ create table friendship
         foreign key (id_town) references graphbase.town (id)
             on update cascade on delete cascade
 );
+
+
+select * from town
+left join friendship  on town.id = id_town
+
+where id_character in (3,4,5);

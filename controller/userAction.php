@@ -11,29 +11,31 @@ require_once 'listOfItems.php';
 <body>
 <h1 align="center">Map</h1>
 
-<form action="/graph/selectorByCharacter/" method="post">
-
+<form action="" method="post">
     <p>
         <select name="character">
             <option disabled selected>Выберите персонажа</option>
             <?php
             require_once 'controller/listOfItems.php';
             foreach ($listOfCharacters as $Character) { ?>
-                <option value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
+                <option <?= (key_exists('character',$_POST) && $_POST['character']== $Character['id'])?'selected="selected" ':''?> value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
             <?php } ?>
         </select>
 
+    </p>
+<?php if(key_exists('character',$_POST) && $_POST['character']):?>
     <p>
         <select name="start">
             <option disabled selected>Выберите стартовый город</option>
             <?php
             foreach ($listOfTowns as $town) { ?>
-                <option value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
+                <option <?= (key_exists('start',$_POST) && $_POST['start'] == $town['id'])?'selected="selected"' :''?> value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
             <?php } ?>
         </select>
 
     </p>
-    <input type="submit" name="startTown" value="Просчитать">
+    <?php endif; ?>
+    <input type="submit" name="choice" value="Выбрать">
     </p>
 </form>
 <?php

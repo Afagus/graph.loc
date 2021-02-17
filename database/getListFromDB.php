@@ -18,9 +18,10 @@ class getListFromDB
     {
         $connection = \graph\database\singleConnectionToDB::getInstance();
         $dbQuery = "SELECT * 
-                    FROM friendship                    
-                    JOIN town 
-                    ON id_character = ". $id_character;
+                    FROM town                    
+                    LEFT JOIN friendship 
+                    ON town.id = id_town
+                    where id_character in ($id_character)";
 
         return $connection->query($dbQuery);
     }
