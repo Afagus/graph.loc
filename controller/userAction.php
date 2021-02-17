@@ -11,29 +11,46 @@ require_once 'listOfItems.php';
 <body>
 <h1 align="center">Map</h1>
 
+
+    <p>
+        <!--        <select name="character">-->
+        <!--            <option disabled selected>Выберите персонажа</option>-->
+        <!--            --><?php
+        //            require_once 'controller/listOfItems.php';
+        //            foreach ($listOfCharacters as $Character) { ?>
+        <!--                <option -->
+        <? //= (key_exists('character',$_POST) && $_POST['character']== $Character['id'])?'selected="selected" ':''?><!-- value="-->
+        <? //= $Character['id'] ?><!--">--><? //= $Character['name'] ?><!--</option><br>-->
+        <!--            --><?php //} ?>
+        <!--        </select>-->
+        <?php
+        require_once 'controller/listOfItems.php';
+
+        foreach ($listOfCharacters as $character):?>
+            <a href="userAction/character" methods="post"><?=$character['name']?></a><br>
+
+
+        <?php endforeach;
+        /**
+         *TODO сделать список персонажей
+         */
+myDebugger($_POST);
+        ?>
+
+    </p>
 <form action="" method="post">
-    <p>
-        <select name="character">
-            <option disabled selected>Выберите персонажа</option>
-            <?php
-            require_once 'controller/listOfItems.php';
-            foreach ($listOfCharacters as $Character) { ?>
-                <option <?= (key_exists('character',$_POST) && $_POST['character']== $Character['id'])?'selected="selected" ':''?> value="<?= $Character['id'] ?>"><?= $Character['name'] ?></option><br>
-            <?php } ?>
-        </select>
+    <?php if (key_exists('character', $_POST) && $_POST['character']): ?>
+        <p>
+            <select name="start">
+                <option disabled selected>Выберите стартовый город</option>
+                <?php
+                foreach ($listOfTowns as $town) { ?>
+                    <option <?= (key_exists('start', $_POST) && $_POST['start'] == $town['id']) ? 'selected="selected"' : '' ?>
+                            value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
+                <?php } ?>
+            </select>
 
-    </p>
-<?php if(key_exists('character',$_POST) && $_POST['character']):?>
-    <p>
-        <select name="start">
-            <option disabled selected>Выберите стартовый город</option>
-            <?php
-            foreach ($listOfTowns as $town) { ?>
-                <option <?= (key_exists('start',$_POST) && $_POST['start'] == $town['id'])?'selected="selected"' :''?> value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
-            <?php } ?>
-        </select>
-
-    </p>
+        </p>
     <?php endif; ?>
     <input type="submit" name="choice" value="Выбрать">
     </p>
