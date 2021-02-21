@@ -20,11 +20,6 @@
                 <input type="submit" name="userAction" value="Карта">
             </form>
         </td>
-        <td>
-            <form action="logic" method="post">
-                <input type="submit" name="count" value="count">
-            </form>
-        </td>
     </tr>
     <td align="center"><h4>Список имеющихся карт</h4></td>
     <td align="center"><h4>Список имеющихся персонажей</h4></td>

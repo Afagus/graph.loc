@@ -1,20 +1,3 @@
-INSERT friendship (id_town, id_character)
-VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(3, 4),
-(5, 6),
-(5, 7),
-(6, 8),
-(6, 8),
-(6, 8),
-(7, 9),
-(8, 10),
-(8, 11),
-(8, 12)
-;
-
 INSERT town (name, coordinateX, coordinateY)
 VALUES
 ('Orodruin', 1100,760),
@@ -45,3 +28,19 @@ INSERT map (name, xSize, ySize)
 VALUES
 ('Middle Earth', 1600, 1200);
 
+INSERT friendship (id_town, id_character)
+VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4),
+(5, 6),
+(5, 7),
+(6, 8),
+(6, 8),
+(6, 8),
+(7, 9),
+(8, 10),
+(8, 11),
+(8, 12)
+;

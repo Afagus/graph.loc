@@ -30,8 +30,6 @@ $database->query($sql);
 
         $database->query($sql2);
 
-myDebugger($_POST);
-myDebugger($database->getLastId());
 header("HTTP/1.1. 301 Moved Permanently");
 $string = "Location: /graph.loc/";
 header("$string");

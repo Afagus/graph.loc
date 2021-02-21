@@ -11,9 +11,23 @@ require_once 'content/header.php';
                 <input type="text" placeholder="Имя персонажа" name="NameOfCharacter"
             </td>
         </tr>
-        <td>
-            <input type="submit">
-        </td>
+        <tr>
+            <td>
+                <?php
+                require_once 'database/getListFromDB.php';
+                $listOfTowns = \graph\database\getListFromDB::getList('town');
+                foreach ($listOfTowns as $listOfTown):
+                    ?>
+                    <input type="checkbox"
+                           name="friendshipTowns[]"
+                           value="<?= $listOfTown['id'] ?>"><?= $listOfTown['name'] ?><Br>
+                <?php endforeach;?>
+
+
+            </td>
+            <td>
+                <input type="submit">
+            </td>
         </tr>
     </table>
 </form>

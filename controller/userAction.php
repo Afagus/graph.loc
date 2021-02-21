@@ -1,73 +1,72 @@
 <?php
-require_once 'logic.php';
-require_once 'functions.php';
 require_once 'content/header.php';
-require_once 'listOfItems.php';
-
-?>
+require_once 'database/getListFromDB.php';
 
 
-<html>
-<body>
-<h1 align="center">Map</h1>
+foreach (\graph\database\getListFromDB::getList('characters') as $character):?>
+    <a href="/graph.loc/userAction/<?= $character['id'] ?>"><?= $character['name'] ?></a><br>
+<?php endforeach;
 
+if (key_exists(1, ROUTE)):?>
+    <form action="" method="post">
+        <?php if (key_exists(1, ROUTE) && ROUTE[1]): ?>
+            <p>
+                <select name="start">
+                    <option disabled selected>Выберите стартовый город</option>
+                    <?php
+                    $counterOfTowns = 0;
+                    $listOfTowns = \graph\database\getListFromDB::getSortedTownList(ROUTE[1]);
+                    foreach ($listOfTowns as $town) : ?>
+                        <option <?= (key_exists('start', $_POST) && $_POST['start'] == $town['id']) ? 'selected="selected"' : '' ?>
+                                value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
+                        <?php $counterOfTowns++;
+                    endforeach; ?>
+                </select>
 
-    <p>
-        <!--        <select name="character">-->
-        <!--            <option disabled selected>Выберите персонажа</option>-->
-        <!--            --><?php
-        //            require_once 'controller/listOfItems.php';
-        //            foreach ($listOfCharacters as $Character) { ?>
-        <!--                <option -->
-        <? //= (key_exists('character',$_POST) && $_POST['character']== $Character['id'])?'selected="selected" ':''?><!-- value="-->
-        <? //= $Character['id'] ?><!--">--><? //= $Character['name'] ?><!--</option><br>-->
-        <!--            --><?php //} ?>
-        <!--        </select>-->
-        <?php
-        require_once 'controller/listOfItems.php';
-
-        foreach ($listOfCharacters as $character):?>
-            <a href="userAction/character" methods="post"><?=$character['name']?></a><br>
-
-
-        <?php endforeach;
-        /**
-         *TODO сделать список персонажей
-         */
-myDebugger($_POST);
-        ?>
-
-    </p>
-<form action="" method="post">
-    <?php if (key_exists('character', $_POST) && $_POST['character']): ?>
-        <p>
-            <select name="start">
-                <option disabled selected>Выберите стартовый город</option>
-                <?php
-                foreach ($listOfTowns as $town) { ?>
-                    <option <?= (key_exists('start', $_POST) && $_POST['start'] == $town['id']) ? 'selected="selected"' : '' ?>
-                            value="<?= $town['id'] ?>"><?= $town['name'] ?></option><br>
-                <?php } ?>
-            </select>
-
+            </p>
+        <?php endif;
+        if ($counterOfTowns < 2):
+            echo '<b style="color: red">' . 'Внимание! Ваш песонаж может посетить ' . $counterOfTowns . ' город(а), расчет расстояние не возможен, добавьте городов больше' . '</b>';
+            echo '<br>';
+        endif; ?>
+        <input type="submit" name="choice" value="Выбрать">
         </p>
-    <?php endif; ?>
-    <input type="submit" name="choice" value="Выбрать">
-    </p>
-</form>
-<?php
+    </form>
+    <?php
+    $graph1 = new \graph\classes\Graph($listOfTowns);
 
+    /**
+     *Добавляем города
+     **/
+    foreach ($graph1->listOfTowns as $town1) {
+        $graph1->addCity($town1['id']);
+    }
 
-// Перенаправление (обновление страницы)
-if (isset($_POST['Submit'])) {
-    echo "<meta http-equiv='refresh' content='0'>";
-}
+    /**
+     * Добавляем расстояния между городами
+     **/
+    foreach ($graph1->listOfTowns as $town1) {
+        foreach ($graph1->listOfTowns as $town2) {
+            $graph1->addWays($town1, $town2);
+        }
+    }
 
+    /**
+     * обозначить стартовый город
+     **/
+    if (!empty($_POST['start'])) {
 
-$setMap = new \graph\classes\Map($graph);
-$setMap->rendering();
+        $nearestCity = $_POST['start'];
 
+        for ($i = 0; $i < count($graph1->ways); $i++) {
+            $graph1->unSetPoint($nearestCity);
+            $nearestCity = $graph1->getNearestNeighbour($nearestCity);
+        }
+    }
 
-?>
-</body>
-</html>
+    /**
+     * Строим карту
+    **/
+    $setMap = new \graph\classes\Map($graph1);
+    $setMap->rendering();
+endif;

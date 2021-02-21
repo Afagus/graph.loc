@@ -14,4 +14,6 @@ $sql = "DELETE FROM friendship
 $newQuery = $newConnection->query($sql);
 
 
+
+
 header("Location: ".$_SERVER['HTTP_REFERER']);
